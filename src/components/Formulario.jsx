@@ -9,7 +9,12 @@ function Formulario() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Enviando...')
+    // Validar Formulario
+    if( [nombre, email, telefono, fecha, sintomas ].includes('') ){
+      console.log('Hay campos vacios')
+    } else{
+      console.log('Todos los campos llenos')
+    }
   }
 
   return (
