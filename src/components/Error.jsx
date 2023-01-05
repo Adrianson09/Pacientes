@@ -1,9 +1,9 @@
 
 
-const Error = ({mensaje}) => {
+const Error = ({children}) => {
   return (
     <div className="mb-3 p-3 text-center bg-red-800 text-white font-bold uppercase rounded">
-                  <p>{mensaje}</p>
+                  {children}
     </div>
   )
 }

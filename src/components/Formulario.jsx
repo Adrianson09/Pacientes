@@ -48,7 +48,7 @@ function Formulario({ pacientes, setPacientes }) {
           </p>
           <form className="bg-white shadow-md mb-10 rounded-lg py-10 px-5" onSubmit={handleSubmit}>
             {error && 
-              <Error mensaje='Todos los campos son obligatorios!'/>
+              <Error><p>Todos los campos son obligatorios!</p></Error>
             }
               <div className="mb-5">
                 <label htmlFor="nombre" className="block text-gray-700 uppercase font-bold"> Nombre</label>
