@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
+import Error from "./Error";
 
-function Formulario() {
+function Formulario({ pacientes, setPacientes }) {
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -19,6 +20,24 @@ function Formulario() {
     } 
 
     setError(false)
+
+    // Obj de Paciente
+    const objetoPaciente = {
+      nombre,
+      email,
+      telefono,
+      fecha,
+      sintomas
+    }
+
+    setPacientes([...pacientes, objetoPaciente]);
+
+    // Reiniciar el formulario
+    setNombre('');
+    setEmail('');
+    setTelefono('');
+    setFecha('');
+    setSintomas('');
   }
 
   return (
@@ -29,19 +48,14 @@ function Formulario() {
           </p>
           <form className="bg-white shadow-md mb-10 rounded-lg py-10 px-5" onSubmit={handleSubmit}>
             {error && 
-              <div className="mb-3 p-3 text-center bg-red-800 text-white font-bold uppercase rounded">
-                  <p >Todos los campos son obligatorios!</p>
-              </div>
+              <Error mensaje='Todos los campos son obligatorios!'/>
             }
               <div className="mb-5">
                 <label htmlFor="nombre" className="block text-gray-700 uppercase font-bold"> Nombre</label>
                 <input className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" type="text" value={nombre} onChange={ (e) => setNombre(e.target.value) } id="nombre" placeholder="Nombre del Paciente"/>
               </div>
 
-              {/* <div className="mb-5">
-                <label htmlFor="apellido" className="block text-gray-700 uppercase font-bold"> Apellido</label>
-                <input className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" type="text" name="" id="apellido" placeholder="Apellido del Paciente"/>
-              </div> */}
+             
 
               <div className="mb-5">
                 <label htmlFor="email" className="block text-gray-700 uppercase font-bold"> Email</label>
