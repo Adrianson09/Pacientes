@@ -6,6 +6,7 @@ function Formulario({ pacientes, setPacientes, paciente, setPaciente }) {
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [fecha, setFecha] = useState('');
+  const [cedula, setCedula] = useState('');
   const [sintomas, setSintomas] = useState('');
 
   const [error, setError] = useState(false);
@@ -16,6 +17,7 @@ function Formulario({ pacientes, setPacientes, paciente, setPaciente }) {
       setEmail(paciente.email)
       setTelefono(paciente.telefono)
       setFecha(paciente.fecha)
+      setCedula(paciente.cedula)
       setSintomas(paciente.sintomas)
     }
   },[paciente])
@@ -29,7 +31,7 @@ function Formulario({ pacientes, setPacientes, paciente, setPaciente }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Validar Formulario
-    if( [nombre, email, telefono, fecha, sintomas ].includes('') ){
+    if( [nombre, email, telefono, fecha, cedula, sintomas ].includes('') ){
       
       setError(true)
       return;
@@ -43,6 +45,7 @@ function Formulario({ pacientes, setPacientes, paciente, setPaciente }) {
       email,
       telefono,
       fecha,
+      cedula,
       sintomas
       
     }
@@ -70,6 +73,7 @@ function Formulario({ pacientes, setPacientes, paciente, setPaciente }) {
     setEmail('');
     setTelefono('');
     setFecha('');
+    setCedula('');
     setSintomas('');
   }
 
@@ -88,8 +92,6 @@ function Formulario({ pacientes, setPacientes, paciente, setPaciente }) {
                 <input className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" type="text" value={nombre} onChange={ (e) => setNombre(e.target.value) } id="nombre" placeholder="Nombre del Paciente"/>
               </div>
 
-             
-
               <div className="mb-5">
                 <label htmlFor="email" className="block text-gray-700 uppercase font-bold"> Email</label>
                 <input className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" type="email" name="" id="email" placeholder="Email del Paciente" value={email} onChange={ (e) => setEmail(e.target.value) }/>
@@ -102,7 +104,12 @@ function Formulario({ pacientes, setPacientes, paciente, setPaciente }) {
 
               <div className="mb-5">
                 <label htmlFor="fecha" className="block text-gray-700 uppercase font-bold"> Fecha</label>
-                <input className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" type="datetime-local" name="" id="fecha" value={fecha} onChange={ (e) => setFecha(e.target.value) }/>
+                <input className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" type="date" name="" id="fecha" value={fecha} onChange={ (e) => setFecha(e.target.value) }/>
+              </div>
+
+              <div className="mb-5">
+                <label htmlFor="cedula" className="block text-gray-700 uppercase font-bold"> Cédula</label>
+                <input className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" type="text" value={cedula} onChange={ (e) => setCedula(e.target.value) } id="cedula" placeholder="Cédula del Paciente"/>
               </div>
 
               <div className="">

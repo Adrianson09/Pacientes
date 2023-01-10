@@ -1,7 +1,7 @@
 
 
 const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
-  const {nombre, email, telefono, fecha, sintomas, id} = paciente
+  const {nombre, email, telefono, fecha, cedula, sintomas, id} = paciente
 
   const handleEliminar = () => {
     const respuesta = confirm('Desea eliminar este paciente?');
@@ -26,6 +26,10 @@ const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
 
                   <p className="font-bold mb-3 text-gray-700 uppercase"> Fecha: 
                   <span className="font-normal normal-case"> {fecha}
+                  </span>  </p>
+
+                  <p className="font-bold mb-3 text-gray-700 uppercase"> Cédula: 
+                  <span className="font-normal normal-case"> {cedula}
                   </span>  </p>
 
                   <p className="font-bold mb-3 text-gray-700 uppercase"> Síntomas: 
